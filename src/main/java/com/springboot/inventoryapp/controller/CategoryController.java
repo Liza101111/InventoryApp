@@ -21,4 +21,11 @@ public class CategoryController {
         model.addAttribute("Categories", listCategories);
         return "categories";
     }
+
+    @GetMapping("/categories/new")
+    public String createNewCategory(Model model){
+        model.addAttribute("category", new Category());
+        return "create_category";
+    }
+
 }
