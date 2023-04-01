@@ -23,7 +23,7 @@ public class ProductController {
     private CategoryRepository categoryRepository;
 
     @GetMapping("/products/new")
-    public String createProduct(Model model){
+    public String createProductForm(Model model){
         List<Category> categoryList = categoryRepository.findAll();
         model.addAttribute("product", new Product());
         model.addAttribute("listCategories", categoryList);
