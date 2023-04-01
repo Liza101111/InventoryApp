@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -26,5 +27,11 @@ public class BrandController {
         model.addAttribute("listCategories", categoryList);
         model.addAttribute("brand", new Brand());
         return "create_brand";
+    }
+
+    @PostMapping("/brands/save")
+    public String saveBrand(Brand brand){
+        brandRepository.save(brand);
+        return "redirect:/";
     }
 }
