@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -32,7 +33,7 @@ public class BrandController {
     @PostMapping("/brands/save")
     public String saveBrand(Brand brand){
         brandRepository.save(brand);
-        return "redirect:/";
+        return "redirect:/brands";
     }
 
     @GetMapping("/brands")
@@ -40,6 +41,15 @@ public class BrandController {
         List<Brand> listBrands = brandRepository.findAll();
         model.addAttribute("brands",listBrands);
         return "brands";
+    }
+
+    @GetMapping("/brands/edit/{id}")
+    public String editBrandForm(@PathVariable("id") Integer id, Model model){
+        List<Category> categoryList = categoryRepository.findAll();
+        Brand brand = brandRepository.findById(id).get();
+        model.addAttribute("listCategories", categoryList);
+        model.addAttribute("brand", brand);
+        return "create_brand";
     }
 
 
