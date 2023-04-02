@@ -4,6 +4,7 @@ import com.springboot.inventoryapp.entity.Brand;
 import com.springboot.inventoryapp.entity.Category;
 import com.springboot.inventoryapp.repository.BrandRepository;
 import com.springboot.inventoryapp.repository.CategoryRepository;
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -50,6 +51,12 @@ public class BrandController {
         model.addAttribute("listCategories", categoryList);
         model.addAttribute("brand", brand);
         return "create_brand";
+    }
+
+    @GetMapping("/brands/delete/{id}")
+    public String deleteBrand(@PathVariable("id") Integer id, Model model){
+        brandRepository.deleteById(id);
+        return "redirect:/brands";
     }
 
 
