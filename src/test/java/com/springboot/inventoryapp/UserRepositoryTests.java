@@ -1,6 +1,7 @@
 package com.springboot.inventoryapp;
 
 import com.springboot.inventoryapp.entity.Role;
+import com.springboot.inventoryapp.entity.User;
 import com.springboot.inventoryapp.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,17 @@ public class UserRepositoryTests {
         entityManager.persist(role1);
         entityManager.persist(role2);
         entityManager.persist(role3);
+    }
+
+    @Test
+    public void testCreateNewUserWithOneRole(){
+        Role role1 = entityManager.find(Role.class, 1);
+        User user = new User("liza@gmail.com", "123456");
+        user.addRole(role1);
+
+        userRepository.save(user);
+
 
     }
+
 }

@@ -2,6 +2,7 @@ package com.springboot.inventoryapp.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.HashSet;
@@ -9,6 +10,7 @@ import java.util.Set;
 
 @Entity
 @Getter
+@NoArgsConstructor
 @Setter
 public class User {
     @Id
@@ -19,6 +21,11 @@ public class User {
     @Column(length = 25, nullable = false)
     private String password;
 
+    public User(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
     @ManyToMany
     @JoinTable(
             name = "user_role",
@@ -26,4 +33,10 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     private Set<Role> roles = new HashSet<>();
+
+    public void addRole(Role role){
+        this.roles.add(role);
+    }
+
+
 }
