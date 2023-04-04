@@ -2,10 +2,12 @@ package com.springboot.inventoryapp.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "product_details")
 public class ProductDetails {
@@ -21,4 +23,9 @@ public class ProductDetails {
     @JoinColumn(name = "product_id")
     private Product product;
 
+    public ProductDetails(String name, String value, Product product) {
+        this.name = name;
+        this.value = value;
+        this.product = product;
+    }
 }
