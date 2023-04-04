@@ -33,11 +33,16 @@ public class ProductController {
 
     @PostMapping("/products/save")
     public String saveProduct(Product product, HttpServletRequest request){
+        String[] detailIDs = request.getParameterValues("detailID");
         String[] detailNames = request.getParameterValues("detailName");
         String[] detailValues = request.getParameterValues("detailValue");
 
         for(int i = 0; i < detailNames.length; i++){
-            product.addDetail(detailNames[i], detailValues[i]);
+            if(detailIDs != null && detailIDs.length > 0){
+                product.setDetail(Integer.valueOf(detailIDs[i]), detailNames[i], detailValues[i]);
+            } else{
+                product.addDetail(detailNames[i], detailValues[i]);
+            }
         }
         productRepository.save(product);
         return "redirect:/products";
