@@ -28,4 +28,9 @@ public class ProductDetails {
         this.value = value;
         this.product = product;
     }
+
+    @Override
+    public String toString() {
+        return name  + value ;
+    }
 }
