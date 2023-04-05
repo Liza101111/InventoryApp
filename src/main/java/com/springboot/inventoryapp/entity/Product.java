@@ -29,6 +29,10 @@ public class Product {
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private List<ProductDetails> details = new ArrayList<>();
 
+    public Product(Integer id){
+        this.id = id;
+    }
+
     public void addDetail(String name, String value){
         this.details.add(new ProductDetails(name, value, this));
     }

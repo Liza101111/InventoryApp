@@ -21,6 +21,10 @@ public class User {
     @Column(length = 25, nullable = false)
     private String password;
 
+    public User(Integer id){
+        this.id = id;
+    }
+
     public User(String email, String password) {
         this.email = email;
         this.password = password;

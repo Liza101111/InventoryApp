@@ -32,4 +32,12 @@ public class shoppingCartTests {
         cartItemRepository.save(cartItem);
     }
 
+    @Test
+    public void testAddItemByIds(){
+        Product product = new Product(5);
+        User user = new User(7);
+        CartItem cartItem = new CartItem(2, product, user);
+        cartItemRepository.save(cartItem);
+    }
+
 }
