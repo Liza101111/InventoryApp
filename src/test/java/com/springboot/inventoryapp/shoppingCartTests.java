@@ -12,6 +12,8 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.annotation.Rollback;
 
+import java.util.List;
+
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @Rollback(false)
@@ -39,5 +41,21 @@ public class shoppingCartTests {
         CartItem cartItem = new CartItem(2, product, user);
         cartItemRepository.save(cartItem);
     }
+
+    @Test
+    public void testAddMultipleItems(){
+        User user = new User(1);
+        Product product1 = new Product(4);
+        Product product2 = new Product(5);
+        Product product3 = new Product(6);
+
+        CartItem cartItem1 = new CartItem(5, product1, user);
+        CartItem cartItem2 = new CartItem(3, product2, user);
+        CartItem cartItem3 = new CartItem(8, product3, user);
+
+        cartItemRepository.saveAll(List.of(cartItem1, cartItem2, cartItem3));
+    }
+
+
 
 }
