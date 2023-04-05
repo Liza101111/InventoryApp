@@ -62,6 +62,13 @@ public class shoppingCartTests {
         cartItemList.forEach(System.out::println);
     }
 
+    @Test
+    public void testUpdateItem(){
+        CartItem cartItem = cartItemRepository.findById(1).get();
+        cartItem.setQuantity(10);
+        cartItem.setProduct(new Product(5));
+    }
+
 
 
 }
