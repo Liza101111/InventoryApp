@@ -82,5 +82,12 @@ public class UserRepositoryTests {
         System.out.println(user.getRoles());
     }
 
+    @Test
+    public void testRemoveUser(){
+        userRepository.deleteById(5);
+    }
+
+
+
 
 }
