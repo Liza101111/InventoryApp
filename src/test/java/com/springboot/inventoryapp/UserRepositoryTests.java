@@ -74,4 +74,13 @@ public class UserRepositoryTests {
         userRepository.save(user);
     }
 
+    @Test
+    public void testGetUser(){
+        User user = userRepository.findById(1).get();
+        entityManager.detach(user);
+        System.out.println(user.getEmail());
+        System.out.println(user.getRoles());
+    }
+
+
 }
