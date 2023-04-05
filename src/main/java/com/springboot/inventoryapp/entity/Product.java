@@ -41,4 +41,8 @@ public class Product {
         this.details.add(new ProductDetails(id,name,value,this));
     }
 
+    @Override
+    public String toString() {
+        return name ;
+    }
 }

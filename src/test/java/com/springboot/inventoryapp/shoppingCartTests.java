@@ -56,6 +56,12 @@ public class shoppingCartTests {
         cartItemRepository.saveAll(List.of(cartItem1, cartItem2, cartItem3));
     }
 
+    @Test
+    public void testListItems(){
+        List<CartItem> cartItemList = cartItemRepository.findAll();
+        cartItemList.forEach(System.out::println);
+    }
+
 
 
 }

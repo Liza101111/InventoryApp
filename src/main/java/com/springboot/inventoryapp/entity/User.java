@@ -46,5 +46,8 @@ public class User {
         this.roles.remove(role);
     }
 
-
+    @Override
+    public String toString() {
+        return email ;
+    }
 }
