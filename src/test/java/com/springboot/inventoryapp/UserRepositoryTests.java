@@ -66,4 +66,12 @@ public class UserRepositoryTests {
 
     }
 
+    @Test
+    public void testCreateNewUserWithNewRole(){
+        Role role = new Role("Salesperson");
+        User user = new User("Lucy@gmail.com", "33656575");
+        user.addRole(role);
+        userRepository.save(user);
+    }
+
 }
