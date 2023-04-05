@@ -54,7 +54,7 @@ public class BrandController {
     }
 
     @GetMapping("/brands/delete/{id}")
-    public String deleteBrand(@PathVariable("id") Integer id, Model model){
+    public String deleteBrand(@PathVariable("id") Integer id){
         brandRepository.deleteById(id);
         return "redirect:/brands";
     }
