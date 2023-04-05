@@ -69,6 +69,11 @@ public class shoppingCartTests {
         cartItem.setProduct(new Product(5));
     }
 
+    @Test
+    public void testRemoveItem(){
+        cartItemRepository.deleteById(1);
+    }
+
 
 
 }
